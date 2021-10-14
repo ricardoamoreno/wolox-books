@@ -1,0 +1,60 @@
+{
+  "version": 2,
+  "projects": {
+    "wolox-books": {
+      "root": "apps/wolox-books",
+      "sourceRoot": "apps/wolox-books/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/wolox-books",
+            "main": "apps/wolox-books/src/main.ts",
+            "tsConfig": "apps/wolox-books/tsconfig.app.json",
+            "assets": ["apps/wolox-books/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/wolox-books/src/environments/environment.ts",
+                  "with": "apps/wolox-books/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "wolox-books:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/wolox-books/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/wolox-books"],
+          "options": {
+            "jestConfig": "apps/wolox-books/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/express"
+  },
+  "defaultProject": "wolox-books"
+}
