@@ -4,6 +4,7 @@
  */
 
 import * as express from 'express';
+import 'reflect-metadata';
 
 const app = express();
 
