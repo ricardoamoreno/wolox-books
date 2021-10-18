@@ -3,8 +3,8 @@
  * This is only a minimal backend to get started.
  */
 
-import * as express from 'express';
 import 'reflect-metadata';
+import * as express from 'express';
 
 const app = express();
 
