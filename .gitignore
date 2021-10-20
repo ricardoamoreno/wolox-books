@@ -38,3 +38,5 @@ testem.log
 .DS_Store
 Thumbs.db
 apps/wolox-books/ormconfig.ts
+
+.build

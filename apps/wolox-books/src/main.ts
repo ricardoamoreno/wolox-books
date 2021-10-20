@@ -1,19 +1,8 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
+import { ApolloServer } from 'apollo-server-lambda';
 
-import 'reflect-metadata';
-import * as express from 'express';
+import { typeDefs } from './app/typeDefs';
+import { resolvers } from './app/resolvers';
 
-const app = express();
+const server = new ApolloServer({ typeDefs, resolvers });
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to wolox-books!' });
-});
-
-const port = process.env.port || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);
+export const graphqlHandler = server.createHandler();
