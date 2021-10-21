@@ -9,7 +9,7 @@ import {
 // Provide resolver functions for your schema fields
 export const resolvers = {
   Query: {
-    getUser: async (_, args: any) => {
+    getUser: async (_, args) => {
       const { id } = args;
       return await getUserById(id);
     },
